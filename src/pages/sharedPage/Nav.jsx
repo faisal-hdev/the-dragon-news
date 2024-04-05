@@ -16,7 +16,7 @@ const Nav = () => {
         <NavLink to="/career">Career</NavLink>
       </li>
       <li>
-        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/register">Register</NavLink>
       </li>
     </>
   );
@@ -52,7 +52,6 @@ const Nav = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        {/* <img src={user} className="w-6 md:w-8 mr-2" alt="" /> */}
         <div
           tabIndex={0}
           role="button"
