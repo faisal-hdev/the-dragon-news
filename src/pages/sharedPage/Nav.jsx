@@ -1,9 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import user from "../../assets/user.png";
+import userImg from "../../assets/user.png";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Button } from "@nextui-org/react";
 
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext);
+  //Log out
+  const handleSignOut = () => {
+    logOut().then().catch();
+  };
   const navLinks = (
     <>
       <li>
@@ -58,12 +65,21 @@ const Nav = () => {
           className="btn btn-ghost btn-circle avatar mr-2"
         >
           <div className="w-9 rounded-full">
-            <img alt="Tailwind CSS Navbar component" src={user} />
+            <img alt="Tailwind CSS Navbar component" src={userImg} />
           </div>
         </div>
-        <Link to="/login" className="btn btn-neutral lg:px-8 py-2">
-          Login
-        </Link>
+        {user ? (
+          <button
+            onClick={handleSignOut}
+            className="btn btn-neutral lg:px-8 py-2"
+          >
+            Log Out
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-neutral lg:px-8 py-2">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

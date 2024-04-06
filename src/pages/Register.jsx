@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "./sharedPage/Nav";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -12,12 +15,21 @@ const Register = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(name, photo, email, password);
+
+    // create User
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
     <div>
       <Nav />
-      <div className="w-full mx-auto max-w-[750px] bg-[#f4f4f42a] md:py-20 md:px-16 p-3 space-y-8 rounded text-black">
+      <div className="w-full mx-auto max-w-[750px] bg-[#dbdbdb2b] md:py-20 md:px-16 p-3 space-y-8 rounded text-black">
         <h1 className="text-2xl md:text-4xl font-bold text-[#403F3F] text-center border-b pb-8">
           Register your account
         </h1>
