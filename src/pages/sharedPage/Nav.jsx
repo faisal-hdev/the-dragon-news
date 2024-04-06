@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import userImg from "../../assets/user.png";
 import { AuthContext } from "../../providers/AuthProvider";
-import { Button } from "@nextui-org/react";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -21,6 +20,9 @@ const Nav = () => {
       </li>
       <li>
         <NavLink to="/career">Career</NavLink>
+      </li>
+      <li>
+        <NavLink to="/addict">News Addict</NavLink>
       </li>
       <li>
         <NavLink to="/register">Register</NavLink>
